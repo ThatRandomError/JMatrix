@@ -79,7 +79,7 @@ public class JMatrix {
         ArrayList<ArrayList<Double>> list = matrix.getList();
         for (int i = 0; i < list.size(); i++) {
             for (int j = 0; j < list.get(i).size(); j++) {
-                list.get(i).set(j, num - list.get(i).get(j));
+                list.get(i).set(j, num / list.get(i).get(j));
             }
         }
         return new JMatrix(list);
@@ -94,6 +94,17 @@ public class JMatrix {
         }
         return new JMatrix(list);
     }
+
+    public static JMatrix mulBy(JMatrix matrix, double num) {
+        ArrayList<ArrayList<Double>> list = matrix.getList();
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = 0; j < list.get(i).size(); j++) {
+                list.get(i).set(j, list.get(i).get(j) * num);
+            }
+        }
+        return new JMatrix(list);
+    }
+
 
     public static JMatrix divByMatrix(JMatrix matrix, double num) {
         ArrayList<ArrayList<Double>> list = matrix.getList();
