@@ -323,6 +323,31 @@ public class JMatrix {
         return new JMatrix(matrix);
     }
 
+    public static JMatrix Transpose(JMatrix matrix) {
+        ArrayList<ArrayList<Double>> list1 = matrix.getList();
+        int rowCount = list1.size();
+        int colCount = list1.get(0).size();
+    
+        ArrayList<ArrayList<Double>> list2 = new ArrayList<>();
+    
+        for (int i = 0; i < colCount; i++) {
+            ArrayList<Double> row = new ArrayList<>();
+            for (int j = 0; j < rowCount; j++) {
+                row.add(0.0);
+            }
+            list2.add(row);
+        }
+    
+        for (int i = 0; i < rowCount; i++) {
+            for (int j = 0; j < colCount; j++) {
+                list2.get(j).set(i, list1.get(i).get(j));
+            }
+        }
+    
+        return new JMatrix(list2);
+    }
+    
+
     public static ArrayList<ArrayList<Double>> toJMatrix(ArrayList<Double> list) {
         ArrayList<ArrayList<Double>> matrix = new ArrayList<>();
         matrix.add(list);
