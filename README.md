@@ -2,66 +2,56 @@
 JMatrix does basic allows matrix operations for 2d and 1d matrixs
 
 
-**Documation:**
-Class: JMatrix
-Fields:
-matrix: A 2D ArrayList of Double values representing the matrix.
-Constructors:
-JMatrix(ArrayList<ArrayList<Double>> matrix): Initializes the JMatrix with a given 2D list of Double values.
+**JMatrix Class Documentation**
+The JMatrix class provides a structure for creating and manipulating two-dimensional matrices using ArrayList<Double>. It supports various mathematical operations, including addition, subtraction, multiplication, exponentiation, and more.
+
+Fields
+matrix: A two-dimensional ArrayList that represents the matrix.
+Constructors
+JMatrix(ArrayList<ArrayList<Double>> matrix): Initializes a new instance of JMatrix with the specified two-dimensional matrix.
 JMatrix(): Initializes an empty matrix.
-Methods:
-Static Methods (Matrix Operations):
-exp(JMatrix matrix): Returns a new matrix with the exponential (e^x) of each element in the input matrix.
+Static Methods
+exp(JMatrix matrix): Returns a new JMatrix where each element is the exponential of the corresponding element in the input matrix.
 
-power(JMatrix matrix, double exponent): Raises each element in the matrix to the power of exponent and returns a new JMatrix.
+power(JMatrix matrix, double exponent): Returns a new JMatrix where each element is raised to the specified exponent.
 
-sum(JMatrix matrix): Calculates and returns the sum of all elements in the matrix.
+sum(JMatrix matrix): Computes and returns the sum of all elements in the matrix.
 
-addBy(JMatrix matrix, double num): Adds the scalar num to every element of the matrix and returns a new matrix.
+addBy(JMatrix matrix, double num): Returns a new JMatrix with each element increased by the specified number.
 
-subBy(JMatrix matrix, double num): Subtracts the scalar num from every element of the matrix and returns a new matrix.
+subBy(JMatrix matrix, double num): Returns a new JMatrix with each element decreased by the specified number.
 
-subByMatrix(JMatrix matrix, double num): Subtracts every element of the matrix from num and returns the result.
+subByMatrix(JMatrix matrix, double num): Returns a new JMatrix where each element is calculated as num - element.
 
-divBy(JMatrix matrix, double num): Divides each element of the matrix by the scalar num and returns a new matrix.
+divBy(JMatrix matrix, double num): Returns a new JMatrix with each element divided by the specified number.
 
-divByMatrix(JMatrix matrix, double num): Divides num by every element of the matrix and returns the result.
+mulBy(JMatrix matrix, double num): Returns a new JMatrix with each element multiplied by the specified number.
 
-Static Methods (Matrix-to-Matrix Operations):
-add(JMatrix matrix1, JMatrix matrix2): Adds two matrices element-wise and returns a new JMatrix. Throws an exception if matrix sizes do not match.
+divByMatrix(JMatrix matrix, double num): Returns a new JMatrix where each element is calculated as num / element.
 
-sub(JMatrix matrix1, JMatrix matrix2): Subtracts matrix2 from matrix1 element-wise and returns a new JMatrix. Throws an exception if matrix sizes do not match.
+add(JMatrix matrix1, JMatrix matrix2): Returns a new JMatrix that is the element-wise sum of the two input matrices.
 
-dot(JMatrix matrix1, JMatrix matrix2): Computes the dot product of two matrices. If both matrices are vectors, it computes the outer product; otherwise, it performs standard matrix multiplication.
+sub(JMatrix matrix1, JMatrix matrix2): Returns a new JMatrix that is the element-wise difference of the two input matrices.
 
-Utility Methods for Dot Product:
-outer(ArrayList<ArrayList<Double>> list1, ArrayList<ArrayList<Double>> list2): Computes the outer product between two 1D lists (vectors).
+mul(JMatrix matrix1, JMatrix matrix2): Returns a new JMatrix that is the element-wise product of the two input matrices.
 
-multiply2DMatrices(ArrayList<ArrayList<Double>> list1, ArrayList<ArrayList<Double>> list2): Multiplies two 2D matrices and returns the result. Throws an exception if matrix dimensions do not align.
+dot(JMatrix matrix1, JMatrix matrix2): Computes the dot product of two matrices and returns the resulting JMatrix.
 
-Instance Methods:
-getList(): Returns the internal 2D ArrayList representing the matrix.
+zeros(int rows, int cols): Creates and returns a new JMatrix filled with zeros.
 
-getMatrix(): Returns a deep copy of the JMatrix object.
+ones(int rows, int cols): Creates and returns a new JMatrix filled with ones.
 
-get(int x, int y): Returns the element at position (x, y).
+random(int rows, int cols): Creates and returns a new JMatrix with random values generated from a Gaussian distribution.
+
+convertArray(Double[][] array): Converts a two-dimensional array into a JMatrix.
+
+Instance Methods
+getList(): Returns the underlying matrix as an ArrayList<ArrayList<Double>>.
+
+get(int x, int y): Returns the element at the specified row (x) and column (y).
 
 getHeight(): Returns the number of rows in the matrix.
 
-getWidth(): Returns the number of columns in the matrix (based on the first row).
-
-Static Utility Methods:
-zeros(int rows, int cols): Returns a JMatrix of size rows x cols filled with zeros.
-
-ones(int rows, int cols): Returns a JMatrix of size rows x cols filled with ones.
-
-random(int rows, int cols): Returns a JMatrix of size rows x cols with random Gaussian values.
-
-toJMatrix(ArrayList<Double> list): Converts a 1D ArrayList<Double> to a JMatrix with a single row.
-
-convertArray(Double[][] array): Converts a 2D array (Double[][]) to a JMatrix.
-
-Error Handling:
-Size Mismatch: Several methods (e.g., add, sub, dot) check that the input matrices have compatible sizes. If they don't, an IllegalArgumentException is thrown with an appropriate message.
+getWidth(): Returns the number of columns in the matrix.
 
 ps. the documation was made by chatgpt
