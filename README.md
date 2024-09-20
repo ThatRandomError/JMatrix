@@ -63,3 +63,5 @@ convertArray(Double[][] array): Converts a 2D array (Double[][]) to a JMatrix.
 
 Error Handling:
 Size Mismatch: Several methods (e.g., add, sub, dot) check that the input matrices have compatible sizes. If they don't, an IllegalArgumentException is thrown with an appropriate message.
+
+ps. the documation was made by chatgpt
