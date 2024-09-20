@@ -1,6 +1,8 @@
 # JMatrix
 JMatrix does basic allows matrix operations for 2d and 1d matrixs
 
+
+**Documation:**
 Class: JMatrix
 Fields:
 matrix: A 2D ArrayList of Double values representing the matrix.
