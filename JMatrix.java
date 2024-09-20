@@ -117,6 +117,33 @@ public class JMatrix {
         return new JMatrix(list);
     }
 
+    public static JMatrix mul(JMatrix matrix1, JMatrix matrix2) {
+        ArrayList<ArrayList<Double>> list1 = matrix1.getList();
+        ArrayList<ArrayList<Double>> list2 = matrix2.getList();
+        
+        if (list2.size() != list1.size()) {
+            throw new IllegalArgumentException("Matrixs different rows size");
+        }
+
+        ArrayList<ArrayList<Double>> result = new ArrayList<>();
+        for (int i = 0; i < list1.size(); i++) {
+            ArrayList<Double> row2 = list2.get(i);
+            ArrayList<Double> row1 = list1.get(i);
+
+            if (row2.size() != row1.size()) {
+                throw new IllegalArgumentException("Matrixs different column size");
+            }
+
+            ArrayList<Double> rowResult = new ArrayList<>();
+            for (int j = 0; j < row2.size(); j++) {
+                rowResult.add(row2.get(j) * row1.get(j));
+            }
+            result.add(rowResult);
+        }
+
+        return new JMatrix(result);
+    }
+
     public static JMatrix add(JMatrix matrix1, JMatrix matrix2) {
         ArrayList<ArrayList<Double>> list1 = matrix1.getList();
         ArrayList<ArrayList<Double>> list2 = matrix2.getList();
