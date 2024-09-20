@@ -203,7 +203,7 @@ public class JMatrix {
         ArrayList<ArrayList<Double>> list2 = matrix2.getList();
         
         if (list1.size() == 1 && list2.size() == 1) {
-            ArrayList<ArrayList<Double>> result = outer(list1, list2);
+            ArrayList<ArrayList<Double>> result = outer(matrix1, matrix2).getList();
             return new JMatrix(result);
         }
     
@@ -212,7 +212,10 @@ public class JMatrix {
         return new JMatrix(result);
     }
     
-    public static ArrayList<ArrayList<Double>> outer(ArrayList<ArrayList<Double>> list1, ArrayList<ArrayList<Double>> list2) {
+    public static JMatrix outer(JMatrix matrix1, JMatrix matrix2) {
+        ArrayList<ArrayList<Double>> list1 = matrix1.getList();
+        ArrayList<ArrayList<Double>> list2 = matrix2.getList();
+
         int sizeA = list1.get(0).size();
         int sizeB = list2.get(0).size();
 
@@ -225,7 +228,7 @@ public class JMatrix {
             result.add(row);
         }
 
-        return result;
+        return new JMatrix(result);
     }
 
     private static ArrayList<ArrayList<Double>> multiply2DMatrices(ArrayList<ArrayList<Double>> list1, ArrayList<ArrayList<Double>> list2) {
