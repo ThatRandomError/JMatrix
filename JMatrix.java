@@ -1,8 +1,9 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
+import java.io.Serializable;
 
-public class JMatrix {
+public class JMatrix implements Serializable {
     private ArrayList<ArrayList<Double>> matrix;
 
     public JMatrix(ArrayList<ArrayList<Double>> matrix) {
@@ -347,11 +348,10 @@ public class JMatrix {
         return new JMatrix(list2);
     }
     
-
-    public static ArrayList<ArrayList<Double>> toJMatrix(ArrayList<Double> list) {
+    public static JMatrix toJMatrix(ArrayList<Double> list) {
         ArrayList<ArrayList<Double>> matrix = new ArrayList<>();
         matrix.add(list);
-        return matrix;
+        return new JMatrix (matrix);
     }
 
     public static JMatrix convertArray(Double[][] array) {
