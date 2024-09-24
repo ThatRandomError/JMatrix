@@ -176,28 +176,25 @@ public class JMatrix implements Serializable {
         ArrayList<ArrayList<Double>> list1 = matrix1.getList();
         ArrayList<ArrayList<Double>> list2 = matrix2.getList();
         
-        if (list2.size() != list1.size()) {
-            throw new IllegalArgumentException("Matrixs different rows size");
+        if (list1.size() != list2.size() || list1.get(0).size() != list2.get(0).size()) {
+            throw new IllegalArgumentException("Matrices must have the same dimensions for subtraction.");
         }
-
+    
         ArrayList<ArrayList<Double>> result = new ArrayList<>();
         for (int i = 0; i < list1.size(); i++) {
-            ArrayList<Double> row2 = list2.get(i);
             ArrayList<Double> row1 = list1.get(i);
-
-            if (row2.size() != row1.size()) {
-                throw new IllegalArgumentException("Matrixs different column size");
-            }
-
+            ArrayList<Double> row2 = list2.get(i);
+    
             ArrayList<Double> rowResult = new ArrayList<>();
-            for (int j = 0; j < row2.size(); j++) {
+            for (int j = 0; j < row1.size(); j++) {
                 rowResult.add(row1.get(j) - row2.get(j));
             }
             result.add(rowResult);
         }
-
+    
         return new JMatrix(result);
     }
+    
 
     public static JMatrix dot(JMatrix matrix1, JMatrix matrix2) {
         ArrayList<ArrayList<Double>> list1 = matrix1.getList();
@@ -276,6 +273,14 @@ public class JMatrix implements Serializable {
         return matrix.get(x).get(y);
     }
 
+    public int[] getShape() {
+        int rows = getHeight();
+        int cols = getWidth();
+        return new int[]{rows, cols};
+    }
+    
+
+
     public int getHeight() {
         return matrix.size();
     }
@@ -324,7 +329,7 @@ public class JMatrix implements Serializable {
         return new JMatrix(matrix);
     }
 
-    public static JMatrix Transpose(JMatrix matrix) {
+    public static JMatrix transpose(JMatrix matrix) {
         ArrayList<ArrayList<Double>> list1 = matrix.getList();
         int rowCount = list1.size();
         int colCount = list1.get(0).size();
@@ -361,5 +366,4 @@ public class JMatrix implements Serializable {
         }
         return new JMatrix(arrayList);
     }
-
 }
