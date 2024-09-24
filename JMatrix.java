@@ -28,7 +28,6 @@ public class JMatrix implements Serializable {
 
     public static JMatrix power(JMatrix matrix, double exponent) {
         ArrayList<ArrayList<Double>> result = new ArrayList<>();
-        ArrayList<ArrayList<Double>> list = matrix.getList();
 
         for (ArrayList<Double> row : result) {
             ArrayList<Double> newRow = new ArrayList<>();
