@@ -354,30 +354,11 @@ public class JMatrix implements Serializable {
         return new JMatrix (matrix);
     }
 
-    public static JMatrix convertArray(Double[][] array) {
+    public static JMatrix toJMatrix(Double[][] array) {
         ArrayList<ArrayList<Double>> arrayList = new ArrayList<ArrayList<Double>>();
         for (Double[] row : array) {
             arrayList.add(new ArrayList<>(Arrays.asList(row)));
         }
         return new JMatrix(arrayList);
-    }
-
-    public static void main(String[] args)
-    {
-        ArrayList<ArrayList<Double>> array =  new ArrayList<ArrayList<Double>>();
-        ArrayList<Double> row = new ArrayList<Double>();
-        row.add(-1.0);
-        array.add(row);
-        JMatrix j1 = new JMatrix(array);
-
-        array =  new ArrayList<ArrayList<Double>>();
-        row = new ArrayList<Double>();
-
-        row.add(2.0);
-        array.add(row);
-
-        JMatrix j2 = new JMatrix(array);
-
-        System.out.println(JMatrix.mul(j1, j2).getList());
     }
 }
