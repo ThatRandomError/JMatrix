@@ -79,7 +79,7 @@ public class JMatrix implements Serializable {
         ArrayList<ArrayList<Double>> list = matrix.getList();
         for (int i = 0; i < list.size(); i++) {
             for (int j = 0; j < list.get(i).size(); j++) {
-                list.get(i).set(j, num / list.get(i).get(j));
+                list.get(i).set(j, num - list.get(i).get(j));
             }
         }
         return new JMatrix(list);
@@ -121,26 +121,22 @@ public class JMatrix implements Serializable {
         ArrayList<ArrayList<Double>> list1 = matrix1.getList();
         ArrayList<ArrayList<Double>> list2 = matrix2.getList();
         
-        if (list2.size() != list1.size()) {
-            throw new IllegalArgumentException("Matrixs different rows size");
+        if (list1.size() != list2.size() || list1.get(0).size() != list2.get(0).size()) {
+            throw new IllegalArgumentException("Matrices must have the same dimensions for element-wise multiplication");
         }
-
+    
         ArrayList<ArrayList<Double>> result = new ArrayList<>();
         for (int i = 0; i < list1.size(); i++) {
-            ArrayList<Double> row2 = list2.get(i);
             ArrayList<Double> row1 = list1.get(i);
-
-            if (row2.size() != row1.size()) {
-                throw new IllegalArgumentException("Matrixs different column size");
-            }
-
+            ArrayList<Double> row2 = list2.get(i);
             ArrayList<Double> rowResult = new ArrayList<>();
-            for (int j = 0; j < row2.size(); j++) {
-                rowResult.add(row2.get(j) * row1.get(j));
+    
+            for (int j = 0; j < row1.size(); j++) {
+                rowResult.add(row1.get(j) * row2.get(j));
             }
             result.add(rowResult);
         }
-
+    
         return new JMatrix(result);
     }
 
@@ -364,5 +360,24 @@ public class JMatrix implements Serializable {
             arrayList.add(new ArrayList<>(Arrays.asList(row)));
         }
         return new JMatrix(arrayList);
+    }
+
+    public static void main(String[] args)
+    {
+        ArrayList<ArrayList<Double>> array =  new ArrayList<ArrayList<Double>>();
+        ArrayList<Double> row = new ArrayList<Double>();
+        row.add(-1.0);
+        array.add(row);
+        JMatrix j1 = new JMatrix(array);
+
+        array =  new ArrayList<ArrayList<Double>>();
+        row = new ArrayList<Double>();
+
+        row.add(2.0);
+        array.add(row);
+
+        JMatrix j2 = new JMatrix(array);
+
+        System.out.println(JMatrix.mul(j1, j2).getList());
     }
 }
